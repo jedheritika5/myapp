@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="s watch.css">
+</head>
+<body>
+    <div class="watch">
+        <div class="screen">
+            <div class="time" id="time">00:00</div>
+            <div class="date" id="date">January 1, 2024</div>
+            <button onclick="showWeather()">Weather</button>
+            <div id="weather" class="weather"></div>
+        </div>
+    </div>
+    <script>
+        function updateTime() {
+    const timeElement = document.getElementById('time');
+    const dateElement = document.getElementById('date');
+    
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const date = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    
+    timeElement.textContent = `${hours}:${minutes}`;
+    dateElement.textContent = date;
+}
+
+setInterval(updateTime, 1000);
+
+// Simulate weather data
+function showWeather() {
+    const weatherElement = document.getElementById('weather');
+    weatherElement.style.display = 'block';
+    weatherElement.textContent = "72°F, Sunny"; // You can make this dynamic if you want!
+}
+
+// Initial call to set the time
+updateTime();
+    </script>
+</body>
+</html>
